@@ -1,4 +1,4 @@
-This is a fork of [mbedtls](https://github.com/Mbed-TLS/mbedtls), packaged for Zig.
+This is a fork of [mbedtls](https://github.com/Mbed-TLS/mbedtls), packaged for Zig.  Build logic from https://github.com/mattnite/zig-mbedtls
 
 Original README follows:
 
