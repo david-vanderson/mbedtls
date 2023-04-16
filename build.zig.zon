@@ -1,0 +1,5 @@
+.{
+    .name = "mbedtls",
+    .version = "development",
+    .dependencies = .{},
+}
