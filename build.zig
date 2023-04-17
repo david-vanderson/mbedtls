@@ -18,7 +18,7 @@ pub fn build(b: *std.build.Builder) void {
         lib.linkSystemLibrary("ws2_32");
 
     b.installArtifact(lib);
-    lib.installHeadersDirectory("include/mbedtls", "mbedtls");
+    lib.installHeadersDirectory("include", "");
 }
 
 const srcs = &.{
