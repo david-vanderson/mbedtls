@@ -2,4 +2,5 @@
     .name = "mbedtls",
     .version = "3.4.0-dev",
     .dependencies = .{},
+    .paths = .{""},
 }

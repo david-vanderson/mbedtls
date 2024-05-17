@@ -1,6 +1,6 @@
 const std = @import("std");
 
-pub fn build(b: *std.build.Builder) void {
+pub fn build(b: *std.Build) !void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
@@ -11,14 +11,14 @@ pub fn build(b: *std.build.Builder) void {
     // not sure why, but mbedtls has runtime issues when it's not built as
     // release-small or with the -Os flag, definitely need to figure out what's
     // going on there
-    lib.addCSourceFiles(srcs, &.{"-Os"});
+    lib.addCSourceFiles(.{ .files = srcs, .flags = &.{"-Os"} });
     lib.linkLibC();
 
-    if (target.isWindows())
+    if (target.result.os.tag == .windows)
         lib.linkSystemLibrary("ws2_32");
 
     b.installArtifact(lib);
-    lib.installHeadersDirectory("include", "");
+    lib.installHeadersDirectory(b.path("include"), "", .{});
 }
 
 const srcs = &.{
