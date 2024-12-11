@@ -5,8 +5,8 @@ pub fn build(b: *std.Build) !void {
     const optimize = b.standardOptimizeOption(.{});
 
     const lib = b.addStaticLibrary(.{ .name = "mbedtls", .target = target, .optimize = optimize });
-    lib.addIncludePath(.{ .path = "include" });
-    lib.addIncludePath(.{ .path = "library" });
+    lib.addIncludePath(b.path("include"));
+    lib.addIncludePath(b.path("library"));
 
     // not sure why, but mbedtls has runtime issues when it's not built as
     // release-small or with the -Os flag, definitely need to figure out what's
